@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
@@ -7,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var routes = require('./config/routes.js');
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"));
 app.engine('handlebars', expressHandlebars({
     defaultLayout: 'main'
 }));
