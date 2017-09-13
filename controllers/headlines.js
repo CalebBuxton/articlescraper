@@ -1,0 +1,51 @@
+var scrape = require('../scripts/scraper.js');
+var makeDate = require('../scripts/date.js');
+var Headline = require('../models/Headline');
+var Note = require('../models/Note');
+
+exports.fetch = function() {
+  scrape("http://www.thescoreesports.com/home", function(data) {
+    var obj = data;
+    var formattedDate = makeDate();
+    for (var i in obj) {
+      addIfNotFound(i);
+    }
+
+    function addIfNotFound(current) {
+      Headline.findOne({
+        'headline': obj[current][0]
+      }, function(err, res) {
+        if (err) {
+          console.log(err);
+        }
+        if (res === null) {
+          var headlineEntry = new Headline({
+            headline: obj[current][0],
+            summary: obj[current][1],
+            date: formattedDate
+          });
+          headlineEntry.save(function(err) {
+            if (err) {
+              console.log(err);
+            } 
+            else {
+              console.log('successfully added');
+            }
+          });
+        }
+      });
+    }
+
+  });
+};
+
+
+exports.check = function(call) {
+  Headline.find()
+    .sort({
+      _id: -1
+    })
+    .exec(function(err, doc) {
+      call(doc);
+    });
+};
