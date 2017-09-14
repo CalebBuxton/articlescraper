@@ -15,22 +15,22 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-mongoose.connect('mongodb://buxton:Notarealpassword123456@ds135534.mlab.com:35534/heroku_bzhkvkvx');
-var db = mongoose.connection;
-db.on('error', function (err) {
-  console.log('Mongoose Error: ', err);
-});
-db.once('open', function () {
-  console.log('Mongoose connection successful.');
-});
+// mongoose.connect('mongodb://buxton:Notarealpassword123456@ds135534.mlab.com:35534/heroku_bzhkvkvx');
+// var db = mongoose.connection;
+// db.on('error', function (err) {
+//   console.log('Mongoose Error: ', err);
+// });
+// db.once('open', function () {
+//   console.log('Mongoose connection successful.');
+// });
 
-app.use('/', routes);
-app.use('/test', routes);
-app.use('/fetch', routes);
-app.use('/gather', routes);
-app.use('/check', routes);
-app.use('/save', routes);
-app.use('/delete', routes);
+// app.use('/', routes);
+// app.use('/test', routes);
+// app.use('/fetch', routes);
+// app.use('/gather', routes);
+// app.use('/check', routes);
+// app.use('/save', routes);
+// app.use('/delete', routes);
 
 
 var port = process.env.PORT || 3000;

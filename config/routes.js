@@ -5,8 +5,7 @@ var headlinesController = require('../controllers/headlines.js');
 var notesController = require('../controllers/notes.js');
 
 router.get('/', function(req, res) {
-    console.log("getting the route");
-    res.render('home', { title: 'eSports News Now' });
+    res.render('home');
 });
 
 router.get('/test', function(req,res) {
