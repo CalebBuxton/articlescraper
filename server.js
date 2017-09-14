@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-mongoose.connect('mongodb://buxton:Notarealpassword123456@ds135534.mlab.com:35534/heroku_bzhkvkvx');
+mongoose.connect('mongodb://buxton2:Notarealpassword123456@ds135534.mlab.com:35534/heroku_bzhkvkvx');
 var db = mongoose.connection;
 db.on('error', function (err) {
   console.log('Mongoose Error: ', err);
